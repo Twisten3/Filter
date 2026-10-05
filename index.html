@@ -25,22 +25,19 @@
         place-items: center;
       }
 
-      iframe {
+      video {
         width: min(100vw, 177.78vh);
         height: min(100vh, 56.25vw);
         border: 0;
+        object-fit: contain;
       }
     </style>
   </head>
   <body>
     <main>
-      <iframe
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&playsinline=1&rel=0"
-        title="Відео на YouTube"
-        allow="autoplay; encrypted-media; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+      <video autoplay muted playsinline controls aria-label="Відео">
+        <source src="meme.mp4" type="video/mp4" />
+      </video>
     </main>
   </body>
 </html>
