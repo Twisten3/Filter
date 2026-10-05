@@ -26,18 +26,54 @@
       }
 
       video {
+        grid-area: 1 / 1;
         width: min(100vw, 177.78vh);
         height: min(100vh, 56.25vw);
         border: 0;
         object-fit: contain;
       }
+
+      button {
+        grid-area: 1 / 1;
+        z-index: 1;
+        align-self: end;
+        margin-bottom: 24px;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 4px;
+        background: #fff;
+        color: #111;
+        font: inherit;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <main>
-      <video autoplay muted playsinline controls aria-label="Відео">
+      <video autoplay playsinline controls aria-label="Відео">
         <source src="meme.mp4" type="video/mp4" />
       </video>
+      <button id="enable-sound" type="button" hidden>Запустити зі звуком</button>
     </main>
+    <script>
+      const video = document.querySelector("video");
+      const soundButton = document.querySelector("#enable-sound");
+
+      video.play().catch(() => {
+        soundButton.hidden = false;
+      });
+
+      soundButton.addEventListener("click", async () => {
+        video.muted = false;
+        video.volume = 1;
+
+        try {
+          await video.play();
+          soundButton.hidden = true;
+        } catch {
+          soundButton.hidden = false;
+        }
+      });
+    </script>
   </body>
 </html>
